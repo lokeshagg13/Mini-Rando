@@ -1,19 +1,21 @@
 // Resolutions
 // Uni Color (color shade)/MultiColor
 // Randomness
-import { useState } from "react";
-
 import Form from "react-bootstrap/Form";
 
 import ColorPicker from "./ColorPicker";
-import Colorizer from "../../color/ColorData";
 
-function RForm() {
-  const [resolution, setResolution] = useState("4k");
-  const [colorMode, setColorMode] = useState("uni");
-  const [selectedColor, setSelectedColor] = useState(Colorizer.colors.red);
-  const [randomnessFactor, setRandomnessFactor] = useState(1);
-
+function RForm({
+  resolution,
+  setResolution,
+  colorMode,
+  setColorMode,
+  selectedColor,
+  setSelectedColor,
+  randomnessFactor,
+  setRandomnessFactor,
+  onRegenerate,
+}) {
   const handleColorSelect = (rgb) => {
     setSelectedColor(rgb);
   };
@@ -26,6 +28,7 @@ function RForm() {
           <button
             type="button"
             className="w-100 p-4 rounded bg-primary text-white text-xl font-medium hover:bg-primary cursor-pointer"
+            onClick={onRegenerate}
           >
             Regenerate
           </button>
@@ -43,10 +46,10 @@ function RForm() {
               value={resolution}
               onChange={(e) => setResolution(e.target.value)}
             >
-              <option value="4k">4K (3840x2160)</option>
-              <option value="2k">2K (1920x1080)</option>
-              <option value="hd">HD (1280x720)</option>
-              <option value="svga">SVGA (800x600)</option>
+              <option value="3840x2160">4K (3840x2160)</option>
+              <option value="1920x1080">2K (1920x1080)</option>
+              <option value="1280x720">HD (1280x720)</option>
+              <option value="800x600">SVGA (800x600)</option>
             </select>
           </div>
         </div>
@@ -91,8 +94,10 @@ function RForm() {
       <div className="mb-6">
         <div>
           <div className="flex flex-col gap-10">
-            <div className="text-xl">Randomness Factor 
-                &nbsp;<span className="text-lg">({randomnessFactor})</span></div>
+            <div className="text-xl">
+              Randomness Factor &nbsp;
+              <span className="text-lg">({randomnessFactor})</span>
+            </div>
             <div className="flex flex-col">
               <Form.Range
                 min={0}
