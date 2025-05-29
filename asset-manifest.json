@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/Mini-Rando/static/js/main.b84066a6.js",
+    "static/media/header.png": "/Mini-Rando/static/media/header.4a93f456b0229002450b.png",
+    "index.html": "/Mini-Rando/index.html",
+    "main.b84066a6.js.map": "/Mini-Rando/static/js/main.b84066a6.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b84066a6.js"
+  ]
+}
